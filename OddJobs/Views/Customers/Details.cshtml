@@ -10,6 +10,7 @@
     <h4>Customer</h4>
     <hr />
     <dl class="dl-horizontal">
+        @Html.HiddenFor(model => model.CustomerId)
         <dt>
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
@@ -82,7 +83,7 @@
     </dl>
 </div>
 <p>
-    @*@Html.ActionLink("Edit My Profile", "Edit", new { id = Model.CustomerId }, new { @class = "btn btn-success" }) |*@
+    @Html.ActionLink("Edit My Profile", "Edit", new { id = Model.CustomerId }, new { @class = "btn btn-success" }) |
     @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

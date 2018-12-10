@@ -79,14 +79,14 @@
                 @Html.ValidationMessageFor(model => model.Zip, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        @Html.HiddenFor(model => model.CustomerId)
         @Html.HiddenFor(model => model.lat)
         @Html.HiddenFor(model => model.lng)
         @Html.HiddenFor(model => model.CustomerWallet)
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-success" />
             </div>
         </div>
     </div>

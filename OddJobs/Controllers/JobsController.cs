@@ -18,9 +18,9 @@ namespace OddJobs.Controllers
         public ActionResult Index()
         {
             Job job = new Job();
-            List<Job> Jobslist = db.Jobs.ToList();
+            //List<Job> Jobslist = db.Jobs.ToList();
 
-            //var jobsList = db.Jobs.Where(j => j.JobId).Tolist(); 
+            var jobsList = db.Jobs.Where(j => j.JobId == j.JobId).ToList(); 
             return View();
         }
 
@@ -50,6 +50,14 @@ namespace OddJobs.Controllers
 
             return View(customer);
 
+        }
+
+        [HttpGet]
+        public ActionResult Details(int? id)
+        {
+            var userId = User.Identity.GetUserId();
+            var job = db.Jobs.Where(x => x.JobId == x.JobId).SingleOrDefault();
+            return View(job);
         }
 
         public ActionResult DeleteJob(int id)

@@ -43,6 +43,7 @@ namespace OddJobs.Controllers
             if (ModelState.IsValid)
             {
                 contractor.ApplicationUserId = User.Identity.GetUserId();
+                SetCoords(contractor);
                 db.Contractors.Add(contractor);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -51,25 +52,38 @@ namespace OddJobs.Controllers
             return View(contractor);
         }
 
+        public void SetCoords(Contractor cont)
+        {
+            GeoLocation geo = new GeoLocation();
+            var coords = geo.GetLatandLong(cont);
+            cont.lat = coords["lat"];
+            cont.lng = coords["lng"];
+            db.SaveChanges();
+        }
+
         // GET: Contractors/Details/5
         public ActionResult Details(int? id)
         {
 
+            var userId = User.Identity.GetUserId();
+            var currentCont = db.Contractors.Where(x => x.ApplicationUserId == userId).SingleOrDefault();
+            return View(currentCont);
+
             //Contractor contractor = db.Contractors.Find(id);
             // return View(contractor);
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
 
-            Contractor contractor = db.Contractors.Find(id);
+            //Contractor contractor = db.Contractors.Find(id);
 
-            if (contractor == null)
-            {
-                return HttpNotFound();
-            }
+            //if (contractor == null)
+            //{
+            //    return HttpNotFound();
+            //}
 
-            return View(contractor);
+            //return View(contractor);
         }
 
         // GET: Contractors/Edit/5

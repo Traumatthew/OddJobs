@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -19,9 +20,13 @@ namespace OddJobs.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var UserId = User.Identity.GetUserId();
-            var cust = db.Customers.Where(c => c.ApplicationUserId == UserId).ToList();
-            return View(cust);
+
+            var userLoggedIn = db.Customers.Include(c => c.ApplicationUser);
+            return View(userLoggedIn.ToListAsync());
+
+            //var UserId = User.Identity.GetUserId();
+            //var cust = db.Customers.Where(c => c.ApplicationUserId == UserId).ToList();
+            //return View(cust);
         }
 
         //Gets all customers **May need to move to contractor or job controller**
@@ -46,6 +51,7 @@ namespace OddJobs.Controllers
             if (ModelState.IsValid)
             {
                 customer.ApplicationUserId = User.Identity.GetUserId();
+                SetCoords(customer);
                 db.Customers.Add(customer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -53,11 +59,25 @@ namespace OddJobs.Controllers
             return View(customer);
         }
 
+        public void SetCoords(Customer cust)
+        {
+            GeoLocation geo = new GeoLocation();
+            var coords = geo.GetLatandLong(cust);
+            cust.lat = coords["lat"];
+            cust.lng = coords["lng"];
+            db.SaveChanges();
+        }
+
         // GET: Customers/Details/5
         public ActionResult Details(int? id)
         {
-            Customer customer = db.Customers.Find(id);
-            return View(customer);
+
+            var userId = User.Identity.GetUserId();
+            var currentCust = db.Customers.Where(x => x.ApplicationUserId == userId).SingleOrDefault();
+            return View(currentCust);
+
+            //Customer customer = db.Customers.Find(id);
+            //return View(customer);
 
             //var UserId = User.Identity.GetUserId();
             //var cust = db.Customers.Where(c => c.ApplicationUserId == UserId).ToList();
