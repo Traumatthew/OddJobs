@@ -207,6 +207,14 @@
     <Compile Include="Migrations\201812061719321_Initial.Designer.cs">
       <DependentUpon>201812061719321_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812101715349_AddLatLngToJobModel.cs" />
+    <Compile Include="Migrations\201812101715349_AddLatLngToJobModel.Designer.cs">
+      <DependentUpon>201812101715349_AddLatLngToJobModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812111833012_Testing_IEnum_Changes.cs" />
+    <Compile Include="Migrations\201812111833012_Testing_IEnum_Changes.Designer.cs">
+      <DependentUpon>201812111833012_Testing_IEnum_Changes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Contractor.cs" />
@@ -291,10 +299,13 @@
     <Content Include="Views\Customers\Edit.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\Home.cshtml" />
-    <Content Include="Views\Jobs\CreateJob.cshtml" />
     <Content Include="Views\Jobs\Edit.cshtml" />
-    <Content Include="Views\Jobs\Index.cshtml" />
+    <Content Include="Views\Contractors\Details.cshtml" />
     <Content Include="Views\Jobs\Details.cshtml" />
+    <Content Include="Views\Jobs\CreateJob.cshtml" />
+    <Content Include="Views\Jobs\Index.cshtml" />
+    <Content Include="Views\Customers\ListOfContractors.cshtml" />
+    <Content Include="Views\Customers\ViewMyJobRequests.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -315,6 +326,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201812061719321_Initial.resx">
       <DependentUpon>201812061719321_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812101715349_AddLatLngToJobModel.resx">
+      <DependentUpon>201812101715349_AddLatLngToJobModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812111833012_Testing_IEnum_Changes.resx">
+      <DependentUpon>201812111833012_Testing_IEnum_Changes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

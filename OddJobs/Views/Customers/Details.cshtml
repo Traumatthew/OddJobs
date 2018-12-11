@@ -84,6 +84,7 @@
 </div>
 <p>
     @Html.ActionLink("Edit My Profile", "Edit", new { id = Model.CustomerId }, new { @class = "btn btn-success" }) |
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId }) |
+    @Html.ActionLink("View My Jobs", "ViewMyJobRequests", new { id = Model.CustomerId }, new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Delete My Profile", "Delete", new { id = Model.CustomerId }, new {@class= "btn btn-danger"}) |
     @Html.ActionLink("Back to List", "Index")
 </p>

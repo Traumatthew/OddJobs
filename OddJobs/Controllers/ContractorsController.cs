@@ -22,11 +22,6 @@ namespace OddJobs.Controllers
             var UserId = User.Identity.GetUserId();
             var cont = db.Contractors.Where(c => c.ApplicationUserId == UserId).ToList();
             return View(cont);
-
-            //string userId = User.Identity.GetUserId();
-            //var loggedInContractor = db.Contractors.Where(c => c.ApplicationUserId == userId).FirstOrDefault();
-            //var myJobs = db.Jobs.Where(j => j.ContractorId == loggedInContractor.ContractorId).Include(j => j.Customers).ToList();
-            //return View(myJobs);
         }
 
         // GET: Contractors/Create
@@ -89,28 +84,45 @@ namespace OddJobs.Controllers
         // GET: Contractors/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
             Contractor contractor = db.Contractors.Find(id);
-
-            if (contractor == null)
-            {
-                return HttpNotFound();
-            }
-
             return View(contractor);
+
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+
+            //Contractor contractor = db.Contractors.Find(id);
+
+            //if (contractor == null)
+            //{
+            //    return HttpNotFound();
+            //}
+
+            //return View(contractor);
         }
 
         // POST: Contractors/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ContractorId,ContractorName,ContractorStreet,ContractorCity,ContractorState,ContractorZip,ContractorPhone,ContractorEmail,AreaOfExpertise")] Contractor contractor)
+        public ActionResult Edit([Bind(Include = "ContractorId,ContractorName,ContractorStreet,ContractorCity,ContractorState,ContractorZip,ContractorPhone,ContractorEmail,AreaOfExpertise")] Contractor contractor, int id)
         {
             if (ModelState.IsValid)
             {
+                Contractor editedContractor = db.Contractors.Find(id);
+                if (editedContractor == null)
+                {
+                    return RedirectToAction("DisplayError", "Contractors");
+                }
+
+                editedContractor.ContractorName = contractor.ContractorName;
+                editedContractor.AreaOfExpertise = contractor.AreaOfExpertise;
+                editedContractor.ContractorEmail = contractor.ContractorEmail;
+                editedContractor.ContractorPhone = contractor.ContractorPhone;
+                editedContractor.ContractorStreet = contractor.ContractorStreet;
+                editedContractor.ContractorCity = contractor.ContractorCity;
+                editedContractor.ContractorState = contractor.ContractorState;
+                editedContractor.ContractorZip = contractor.ContractorZip;
                 db.Entry(contractor).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -182,10 +194,16 @@ namespace OddJobs.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult GetListOfJobs()
+        public ActionResult GetListOfContractorJobs()
         {
-            var custList = db.Contractors.Include(c => c.Customers).ToList();
-            return View(custList);
+
+            string userId = User.Identity.GetUserId();
+            var loggedInContractor = db.Contractors.Where(c => c.ApplicationUserId == userId).FirstOrDefault();
+            var myJobs = db.Jobs.Where(j => j.ContractorId == loggedInContractor.ContractorId).Include(j => j.Customers).ToList();
+            return View(myJobs);
+
+            //var custList = db.Contractors.Include(c => c.Customers).ToList();
+            //return View(custList);
         }
 
         protected override void Dispose(bool disposing)

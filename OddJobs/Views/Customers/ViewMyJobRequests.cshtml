@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<OddJobs.Models.Job>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ViewMyJobRequests";
 }
 
-<h2>Index</h2>
+<h2>ViewMyJobRequests</h2>
 
-@*<p>
+<p>
     @Html.ActionLink("Create New", "Create")
-</p>*@
+</p>
 <table class="table">
     <tr>
         <th>
@@ -23,12 +23,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Zip)
         </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.lat)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.lng)
-        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Date)
         </th>
@@ -42,14 +36,11 @@
             @Html.DisplayNameFor(model => model.Details)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.JobCategory)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.CustomerId)
+            @Html.DisplayNameFor(model => model.JobCategory.CatName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ContractorId)
-        </th>*@
+            @Html.DisplayNameFor(model => model.Contractor.ContractorName)
+        </th>
         <th></th>
     </tr>
 
@@ -67,12 +58,6 @@
         <td>
             @Html.DisplayFor(modelItem => item.Zip)
         </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.lat)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.lng)
-        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.Date)
         </td>
@@ -86,18 +71,15 @@
             @Html.DisplayFor(modelItem => item.Details)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.JobCategory)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.CustomerId)
+            @Html.DisplayFor(modelItem => item.JobCategory.CatName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ContractorId)
-        </td>*@
+            @Html.DisplayFor(modelItem => item.Contractor.ContractorName)
+        </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.JobId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.JobId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.JobId })
+            @Html.ActionLink("Edit", "Edit", "Jobs", new { id=item.JobId }) |
+            @Html.ActionLink("Details", "Details", "Jobs", new { id=item.JobId }) |
+            @Html.ActionLink("Delete", "Delete", "Delete", new { id=item.JobId })
         </td>
     </tr>
 }

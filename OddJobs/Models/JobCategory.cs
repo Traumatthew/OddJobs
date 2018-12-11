@@ -10,7 +10,15 @@ namespace OddJobs.Models
     {
         [Key]
         public int CatId { get; set; }
-        [Display(Name = "Job Type")]
+        [Display(Name = "Job Category")]
         public string CatName { get; set; }
+    }
+
+    public enum JobCat
+    {
+        Plumbing,
+        Landscaping,
+        Roofing,
+        Cleaning
     }
 }

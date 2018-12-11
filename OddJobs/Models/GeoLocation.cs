@@ -38,5 +38,15 @@ namespace OddJobs.Models
             var items = JsonConvert.DeserializeObject<dynamic>(result);
             return items.results[0].geometry.location;
         }
+
+        public dynamic GetLatandLong(Job job)
+        {
+            string url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + job.Street.Replace(" ", "+") + job.City.Replace(" ", "+") + ",+" + job.State + ",+&key=" + Keys.GoogleKey;
+            var result = new System.Net.WebClient().DownloadString(url);
+            var items = JsonConvert.DeserializeObject<dynamic>(result);
+            return items.results[0].geometry.location;
+        }
+
+
     }
 }

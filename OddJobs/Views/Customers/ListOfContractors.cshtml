@@ -1,0 +1,111 @@
+﻿@model IEnumerable<OddJobs.Models.Contractor>
+
+@{
+    ViewBag.Title = "ListOfContractors";
+}
+
+<h2>List Of Contractors</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ContractorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContractorPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AreaOfExpertise)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContractorEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContractorStreet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContractorState)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContractorCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContractorZip)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.TempRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RatingData)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Rating)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.lat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lng)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicationUserId)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContractorName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContractorPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AreaOfExpertise)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContractorEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContractorStreet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContractorState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContractorCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContractorZip)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.TempRating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RatingData)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Rating)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.lat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lng)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicationUserId)
+        </td>*@
+        <td>
+
+            @Html.ActionLink("Details", "Details", "Contractor", new { id=item.ContractorId }) |
+
+        </td>
+    </tr>
+}
+
+</table>

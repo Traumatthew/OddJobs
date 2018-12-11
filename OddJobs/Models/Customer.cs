@@ -42,6 +42,6 @@ namespace OddJobs.Models
 
         public IEnumerable<Contractor> Contractors { get; set; }
 
-        public IEnumerable<Job> Jobs { get; set; }
+        //public IEnumerable<Job> Jobs { get; set; }
     }
 }

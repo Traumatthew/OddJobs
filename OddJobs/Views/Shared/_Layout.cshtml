@@ -25,14 +25,14 @@
                     {
                         <li>@Html.ActionLink("Profile", "Details", "Customers")</li>
                         <li>@Html.ActionLink("Get A Quote", "CreateJob", "Jobs")</li>
-                        <li>@Html.ActionLink("Find A Contractor", "Index", "Contractors")</li>
+                        <li>@Html.ActionLink("Find A Contractor", "ListOfContractors", "Customers")</li>
                     }
 
                     @if (User.IsInRole("Contractor"))
                     {
-                        <li>@Html.ActionLink("Details", "Details", "Contractors")</li>
+                        <li>@Html.ActionLink("My Details", "Details", "Contractors")</li>
                         <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Find A Job", "Index", "Jobs")</li>
+                        <li>@Html.ActionLink("Get a List of Jobs", "Index", "Jobs")</li>
                     }
 
                 </ul>

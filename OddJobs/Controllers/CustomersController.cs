@@ -128,7 +128,7 @@ namespace OddJobs.Controllers
 
                 if (editedCustomer == null)
                 {
-                    return RedirectToAction("DisplayError", "Contractors");
+                    return RedirectToAction("DisplayError", "Customers");
                 }
 
                 editedCustomer.FirstName = customer.FirstName;
@@ -167,10 +167,30 @@ namespace OddJobs.Controllers
             return RedirectToAction("LogOff", "Account");
         }
 
-        public ActionResult GetListOfContractors()
+        public ActionResult ListOfContractors()
         {
-            var contList = db.Customers.Include(c => c.Contractors).ToList();
-            return View(contList);
+            return View(db.Contractors.ToList());
+            //var contList = db.Customers.Include(c => c.Contractors).ToList();
+            //return View(contList);
+        }
+
+        [HttpGet]
+        public ActionResult ViewMyJobRequests()
+        {
+            var userId = User.Identity.GetUserId();
+            var LoggedInCust = db.Customers.Where(c => c.ApplicationUserId == userId).FirstOrDefault();
+            var jobs = db.Jobs.Where(x => x.CustomerId == LoggedInCust.CustomerId).ToList();
+            //var custJobs = db.Jobs.Where(j => j.CustomerId == LoggedInCust.CustomerId && j => j.Jobs == j.JobId).FirstOrDefault(); //.Include(j => j.JobId).ToList();
+            return View(jobs);
+
+
+            //var currentCust = db.Customers.Where(x => x.ApplicationUserId == userId).SingleOrDefault();
+            //var UserJobs = db.Customers.w
+
+            //string userId = User.Identity.GetUserId();
+            //var loggedInContractor = db.Contractors.Where(c => c.ApplicationUserId == userId).FirstOrDefault();
+            //var myJobs = db.Jobs.Where(j => j.ContractorId == loggedInContractor.ContractorId).Include(j => j.Customers).ToList();
+
         }
     }
 }

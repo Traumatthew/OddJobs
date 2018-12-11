@@ -1,0 +1,113 @@
+﻿@model OddJobs.Models.Contractor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Contractor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @Html.HiddenFor(model => model.ContractorId)
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContractorName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractorPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContractorPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AreaOfExpertise)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AreaOfExpertise)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractorEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContractorEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractorStreet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContractorStreet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractorState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContractorState)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractorCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContractorCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractorZip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContractorZip)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.TempRating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TempRating)
+        </dd>*@
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.RatingData)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RatingData)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+
+        @Html.HiddenFor(model => model.lat)
+        @Html.HiddenFor(model => model.lng)
+        @Html.HiddenFor(model => model.ApplicationUserId)
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit My Profile", "Edit", new { id = Model.ContractorId }, new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Delete My Profile", "Delete", new { id = Model.ContractorId }, new { @class = "btn btn-danger" }) |
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.ContractorId }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>
