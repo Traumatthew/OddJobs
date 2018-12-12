@@ -117,6 +117,7 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.JobId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @*@Html.ActionLink("Place Bid")*@
+    @Html.ActionLink("Edit", "Edit", new { id = Model.JobId }, new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Back to List", "ViewMyJobRequests", "Customers", routeValues: null, htmlAttributes: null)
 </p>

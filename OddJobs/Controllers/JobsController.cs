@@ -84,7 +84,7 @@ namespace OddJobs.Controllers
         public ActionResult Details(int? id)
         {
             var userId = User.Identity.GetUserId();
-            var job = db.Jobs.Where(x => x.JobId == x.JobId).SingleOrDefault();
+            var job = db.Jobs.Where(x => x.JobId == x.JobId).FirstOrDefault();
             return View(job);
         }
 
@@ -103,9 +103,17 @@ namespace OddJobs.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            Job job = db.Jobs.Find(id);
+            return View(job);
+        }
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "JobId,Location,Date,Details,JobCategory")] Job job, int id)
+        public ActionResult Edit([Bind(Include = "JobId,Street,City,State,Zip,Date,Details,JobCategory")] Job job, int id)
         {
             if (ModelState.IsValid)
             {
@@ -127,7 +135,7 @@ namespace OddJobs.Controllers
 
                 db.Entry(editedJob).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details");
             }
 
             return View(job);
