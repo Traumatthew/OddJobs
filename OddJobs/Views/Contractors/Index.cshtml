@@ -73,7 +73,8 @@
             @Html.ActionLink("Edit", "Edit", new { id = item.ContractorId }) |
             @Html.ActionLink("Details", "Details", new { id = item.ContractorId }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.ContractorId }) |
-            @Html.ActionLink("List Of All Jobs", "CustomerList", "Customers", null, new { id = item.ContractorId }) |
+            @Html.ActionLink("List Of All Jobs", "Index", "Jobs", null, new { id = item.ContractorId }) |
+            @*@Html.ActionLink("List Of All Jobs", "CustomerList", "Customers", null, new { id = item.ContractorId }) |*@
 
         </td>
     </tr>

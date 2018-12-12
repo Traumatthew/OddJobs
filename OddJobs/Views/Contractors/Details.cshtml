@@ -109,5 +109,5 @@
     @Html.ActionLink("Edit My Profile", "Edit", new { id = Model.ContractorId }, new { @class = "btn btn-success" }) |
     @Html.ActionLink("Delete My Profile", "Delete", new { id = Model.ContractorId }, new { @class = "btn btn-danger" }) |
     @*@Html.ActionLink("Edit", "Edit", new { id = Model.ContractorId }) |*@
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("View Jobs", "Index", "Jobs", null, null, null, new { id = Model.ContractorId }, new { @class = "btn btn-success" })
 </p>

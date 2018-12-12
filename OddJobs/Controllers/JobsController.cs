@@ -64,7 +64,7 @@ namespace OddJobs.Controllers
                 SetCoords(job);
                 db.Jobs.Add(job);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details");
             }
 
             return View(customer);
@@ -84,7 +84,7 @@ namespace OddJobs.Controllers
         public ActionResult Details(int? id)
         {
             var userId = User.Identity.GetUserId();
-            var job = db.Jobs.Where(x => x.JobId == x.JobId).FirstOrDefault();
+            var job = db.Jobs.Where(x => x.JobId == id).FirstOrDefault();
             return View(job);
         }
 

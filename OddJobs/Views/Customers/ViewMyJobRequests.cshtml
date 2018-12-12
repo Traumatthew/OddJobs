@@ -79,7 +79,7 @@
         <td>
             @*@Html.ActionLink("Edit", "Edit", "Jobs", routeValues: null, htmlAttributes: null) | 
             new { id=item.JobId }) |*@
-            @Html.ActionLink("Details", "Details", "Jobs", routeValues: null, htmlAttributes: null) |
+            @Html.ActionLink("Details", "Details", "Jobs", new { id = item.JobId }, null) |
             @*new { id=item.JobId }) |*@
             @Html.ActionLink("Delete", "Delete", "Jobs", routeValues: null, htmlAttributes: null) |
             @*new { id=item.JobId })*@

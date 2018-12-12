@@ -102,7 +102,7 @@
         </td>*@
         <td>
 
-            @Html.ActionLink("Details", "Details", "Contractors", routeValues: null, htmlAttributes: null) 
+            @Html.ActionLink("Details", "Details", "Contractors", new { id = item.ContractorId}, null) 
             @*new { id=item.ContractorId }) |*@
 
         </td>

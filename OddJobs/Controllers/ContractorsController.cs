@@ -59,11 +59,20 @@ namespace OddJobs.Controllers
         // GET: Contractors/Details/5
         public ActionResult Details(int? id)
         {
+            if (User.IsInRole("Contractor"))
+            {
+                var userId = User.Identity.GetUserId();
+                var currentCont = db.Contractors.Where(x => x.ApplicationUserId == userId).SingleOrDefault();
+                return View(currentCont);
+            }
 
-            var userId = User.Identity.GetUserId();
-            var currentCont = db.Contractors.Where(x => x.ApplicationUserId == userId).SingleOrDefault();
-            return View(currentCont);
+            if (User.IsInRole("Customer"))
+            {
+                var contInDb = db.Contractors.Where(x => x.ContractorId == id).FirstOrDefault();
+                return View(contInDb);
+            }
 
+            return View();
             //Contractor contractor = db.Contractors.Find(id);
             // return View(contractor);
             //if (id == null)
@@ -123,7 +132,7 @@ namespace OddJobs.Controllers
                 editedContractor.ContractorCity = contractor.ContractorCity;
                 editedContractor.ContractorState = contractor.ContractorState;
                 editedContractor.ContractorZip = contractor.ContractorZip;
-                db.Entry(contractor).State = EntityState.Modified;
+                db.Entry(editedContractor).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
