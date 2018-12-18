@@ -1,0 +1,64 @@
+﻿@model OddJobs.Models.ContractorJobBid
+
+@{
+    ViewBag.Title = "DeleteBid";
+}
+
+<h2>DeleteBid</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ContractorJobBid</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EstHoursToComplete)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstHoursToComplete)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaterialCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaterialCost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BidAmt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BidAmt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobId)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

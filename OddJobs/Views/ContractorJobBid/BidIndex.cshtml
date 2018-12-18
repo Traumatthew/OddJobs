@@ -1,0 +1,57 @@
+﻿@model IEnumerable<OddJobs.Models.ContractorJobBid>
+
+@{
+    ViewBag.Title = "BidIndex";
+}
+
+<h2>BidIndex</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EstHoursToComplete)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaterialCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BidAmt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstHoursToComplete)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaterialCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BidAmt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BidId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BidId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BidId })
+        </td>
+    </tr>
+}
+
+</table>

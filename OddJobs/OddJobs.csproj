@@ -303,10 +303,14 @@
     <Content Include="Views\Customers\Customer_ContractorDetails.cshtml" />
     <Content Include="Views\Contractors\ViewCustomerJobDetails.cshtml" />
     <Content Include="Views\Contractors\CreateBid.cshtml" />
+    <Content Include="Views\ContractorJobBid\CreateBid.cshtml" />
+    <Content Include="Views\ContractorJobBid\BidDetails.cshtml" />
+    <Content Include="Views\ContractorJobBid\EditBid.cshtml" />
+    <Content Include="Views\ContractorJobBid\DeleteBid.cshtml" />
+    <Content Include="Views\ContractorJobBid\BidIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ContractorJobBid\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

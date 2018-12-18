@@ -1,0 +1,58 @@
+﻿@model OddJobs.Models.ContractorJobBid
+
+@{
+    ViewBag.Title = "BidDetails";
+}
+
+<h2>BidDetails</h2>
+
+<div>
+    <h4>ContractorJobBid</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EstHoursToComplete)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstHoursToComplete)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaterialCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaterialCost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BidAmt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BidAmt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BidId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
