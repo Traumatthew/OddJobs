@@ -184,7 +184,6 @@ namespace OddJobs.Controllers
                     {
                         UserManager.AddToRole(user.Id, "Customer");
                         var newCust = db.Customers.Where(x => x.Email == model.Email).FirstOrDefault();
-                        //SetCoords(newCust);
                         return RedirectToAction("Create", "Customers");
                     }
 
@@ -192,7 +191,6 @@ namespace OddJobs.Controllers
                     {
                         UserManager.AddToRole(user.Id, "Contractor");
                         var newCont = db.Contractors.Where(x => x.ContractorEmail == model.Email).FirstOrDefault();
-                        //SetCoords(newCont);
                         return RedirectToAction("Create", "Contractors");
                     }
 

@@ -35,17 +35,15 @@ namespace OddJobs.Controllers
             //return View();
         }
 
-        //GET: List Of All Jobs
-        //public ActionResult Index2()
-        //{
-        //    return View(db.Jobs.ToList());
-        //}
-
         [HttpGet]
         public ActionResult CreateJob()
         {
-            var currentUser = User.Identity.GetUserId();
-            Job job = new Job();
+            //var currentUser = User.Identity.GetUserId();
+            var jobCat = db.JobCategories.ToList();
+            Job job = new Job()
+            {
+                JobCategories = jobCat
+            };
             return View(job);
             //string userId = User.Identity.GetUserId();
             //var loggedInContractor = db.Contractors.Where(c => c.ApplicationUserId == userId).FirstOrDefault();
@@ -56,8 +54,8 @@ namespace OddJobs.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateJob([Bind(Include = "JobId,Location,Estimate,Details")] Customer customer, Job job)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 var userId = User.Identity.GetUserId();
                 var customerInDb = db.Customers.Where(c => c.ApplicationUserId == userId).SingleOrDefault();
                 job.CustomerId = customerInDb.CustomerId;
@@ -65,9 +63,9 @@ namespace OddJobs.Controllers
                 db.Jobs.Add(job);
                 db.SaveChanges();
                 return RedirectToAction("Details");
-            }
+            //}
 
-            return View(customer);
+            //return View("Details");
 
         }
 
@@ -113,7 +111,7 @@ namespace OddJobs.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "JobId,Street,City,State,Zip,Date,Details,JobCategory")] Job job, int id)
+        public ActionResult Edit([Bind(Include = "JobId,Street,City,State,Zip,Estimate,Date,Details,JobCategory")] Job job, int id)
         {
             if (ModelState.IsValid)
             {
@@ -128,7 +126,7 @@ namespace OddJobs.Controllers
                 editedJob.City = job.City;
                 editedJob.State = job.State;
                 editedJob.Zip = job.Zip;
-                //editedJob.Location = job.Location;
+                editedJob.Estimate = job.Estimate;
                 editedJob.Date = job.Date;
                 editedJob.Details = job.Details;
                 editedJob.JobCategory = job.JobCategory;

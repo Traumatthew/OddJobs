@@ -54,7 +54,7 @@ namespace OddJobs.Controllers
                 SetCoords(customer);
                 db.Customers.Add(customer);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details");
             }
             return View(customer);
         }
@@ -83,18 +83,13 @@ namespace OddJobs.Controllers
             //var cust = db.Customers.Where(c => c.ApplicationUserId == UserId).ToList();
             //return View(cust);
 
+        }
 
-            //if (id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
-            //Customer customer = db.Customers.Find(id);
-
-            //if (customer == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //return View(customer);
+        [HttpGet]
+        public ActionResult Customer_ContractorDetails(int? id)
+        {
+            var contInDb = db.Contractors.Where(x => x.ContractorId == id).FirstOrDefault();
+            return View(contInDb);
         }
 
         // GET: Customers/Edit/5
@@ -102,19 +97,6 @@ namespace OddJobs.Controllers
         {
             Customer customer = db.Customers.Find(id);
             return View(customer);
-
-            //if (id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
-
-            //Customer customer = db.Customers.Find(id);
-
-            //if (customer == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //return View(customer);
         }
 
         // POST: Customers/Edit/5
@@ -141,7 +123,7 @@ namespace OddJobs.Controllers
                 editedCustomer.Email = customer.Email;
                 db.Entry(editedCustomer).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details");
             }
 
             return View(customer);

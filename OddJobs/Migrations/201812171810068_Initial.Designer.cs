@@ -13,7 +13,7 @@ namespace OddJobs.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201812061719321_Initial"; }
+            get { return "201812171810068_Initial"; }
         }
         
         string IMigrationMetadata.Source

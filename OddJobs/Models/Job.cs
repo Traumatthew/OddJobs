@@ -25,10 +25,6 @@ namespace OddJobs.Models
 
         public string lng { get; set; }
 
-
-        //[Required(ErrorMessage = "Location Required")]
-        //public string Location { get; set; }
-
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         [Required(ErrorMessage = "A Date you wish you job to be started is required")]
         [Column(TypeName = "datetime2")]
@@ -47,7 +43,7 @@ namespace OddJobs.Models
         public int CatId { get; set; }
         public JobCategory JobCategory { get; set; }
 
-        //public IEnumerable<JobCategory> jobCategories { get; set; }
+        public IEnumerable<JobCategory> JobCategories { get; set; }
 
         [ForeignKey("Customers")]
         [Display(Name = "Customer Id")]

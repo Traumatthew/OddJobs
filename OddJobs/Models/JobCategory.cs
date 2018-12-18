@@ -14,11 +14,13 @@ namespace OddJobs.Models
         public string CatName { get; set; }
     }
 
-    public enum JobCat
-    {
-        Plumbing,
-        Landscaping,
-        Roofing,
-        Cleaning
-    }
+    //public enum JobCat
+    //{
+    //    Plumbing,
+    //    Landscaping,
+    //    Roofing,
+    //    Cleaning,
+    //    Electrical,
+    //    GeneralLabor,
+    //}
 }

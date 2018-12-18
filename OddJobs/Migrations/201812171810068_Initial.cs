@@ -3,7 +3,7 @@ namespace OddJobs.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Testing_IEnum_Changes : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {

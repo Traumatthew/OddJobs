@@ -1,10 +1,10 @@
 ﻿@model OddJobs.Models.Job
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "ViewCustomerJobDetails";
 }
 
-<h2>Details</h2>
+<h2>ViewCustomerJobDetails</h2>
 
 <div>
     <h4>Job</h4>
@@ -74,10 +74,33 @@
             @Html.DisplayFor(model => model.Details)
         </dd>
 
+        @*<dt>
+            @Html.DisplayNameFor(model => model.CatId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CatId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractorId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContractorId)
+        </dd>*@
+
     </dl>
 </div>
 <p>
-    @*@Html.ActionLink("Place Bid")*@
-    @Html.ActionLink("Edit", "Edit", "Jobs", new { id = Model.JobId }, new { @class = "btn btn-success" }) |
-    @Html.ActionLink("Back to List", "ViewMyJobRequests", "Customers", routeValues: null, htmlAttributes: null)
+    @Html.ActionLink("Place Bid", "CreateBid", "ContractorJobBid", new { id = Model.JobId }) |
+    @Html.ActionLink("Back to List", "Index", "Jobs")
 </p>

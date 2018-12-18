@@ -41,7 +41,7 @@ namespace OddJobs.Controllers
                 SetCoords(contractor);
                 db.Contractors.Add(contractor);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details");
             }
 
             return View(contractor);
@@ -65,29 +65,16 @@ namespace OddJobs.Controllers
                 var currentCont = db.Contractors.Where(x => x.ApplicationUserId == userId).SingleOrDefault();
                 return View(currentCont);
             }
-
-            if (User.IsInRole("Customer"))
-            {
-                var contInDb = db.Contractors.Where(x => x.ContractorId == id).FirstOrDefault();
-                return View(contInDb);
-            }
-
             return View();
-            //Contractor contractor = db.Contractors.Find(id);
-            // return View(contractor);
-            //if (id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
+           
+        }
 
-            //Contractor contractor = db.Contractors.Find(id);
-
-            //if (contractor == null)
-            //{
-            //    return HttpNotFound();
-            //}
-
-            //return View(contractor);
+        [HttpGet]
+        public ActionResult ViewCustomerJobDetails(int? id)
+        {
+            var userId = User.Identity.GetUserId();
+            var job = db.Jobs.Where(x => x.JobId == id).FirstOrDefault();
+            return View(job);
         }
 
         // GET: Contractors/Edit/5
@@ -95,20 +82,6 @@ namespace OddJobs.Controllers
         {
             Contractor contractor = db.Contractors.Find(id);
             return View(contractor);
-
-            //if (id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
-
-            //Contractor contractor = db.Contractors.Find(id);
-
-            //if (contractor == null)
-            //{
-            //    return HttpNotFound();
-            //}
-
-            //return View(contractor);
         }
 
         // POST: Contractors/Edit/5
@@ -134,7 +107,7 @@ namespace OddJobs.Controllers
                 editedContractor.ContractorZip = contractor.ContractorZip;
                 db.Entry(editedContractor).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details");
             }
             return View(contractor);
         }
@@ -214,6 +187,7 @@ namespace OddJobs.Controllers
             //var custList = db.Contractors.Include(c => c.Customers).ToList();
             //return View(custList);
         }
+
 
         protected override void Dispose(bool disposing)
         {

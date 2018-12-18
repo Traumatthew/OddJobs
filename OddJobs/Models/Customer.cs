@@ -40,7 +40,7 @@ namespace OddJobs.Models
         public int? CustomerWalletId { get; set; }
         public CustomerWallet CustomerWallet { get; set; }
 
-        public IEnumerable<Contractor> Contractors { get; set; }
+        //public IEnumerable<Contractor> Contractors { get; set; }
 
         //public IEnumerable<Job> Jobs { get; set; }
     }

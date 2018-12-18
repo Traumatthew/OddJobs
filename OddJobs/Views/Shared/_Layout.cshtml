@@ -24,7 +24,7 @@
                     @if (User.IsInRole("Customer"))
                     {
                         <li>@Html.ActionLink("Profile", "Details", "Customers")</li>
-                        <li>@Html.ActionLink("Get A Quote", "CreateJob", "Jobs")</li>
+                        <li>@Html.ActionLink("Post A Job", "CreateJob", "Jobs")</li>
                         <li>@Html.ActionLink("My Job Requests", "ViewMyJobRequests", "Customers")</li>
                         <li>@Html.ActionLink("Find A Contractor", "ListOfContractors", "Customers")</li>
                     }

@@ -34,9 +34,10 @@ namespace OddJobs.Models
 
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Contractor> Contractors { get; set; }
-        //public DbSet<CustomerContractorJobsViewModel> CustomerContractorJobsVM { get; set; }
         public DbSet<CustomerWallet> CustomerWallets { get; set; }
         public DbSet<GeoLocation> GeoLocation { get; set; }
         public DbSet<Job> Jobs { get; set; }
+        public DbSet<ContractorJobBid> ContractorJobBids { get; set; }
+        public DbSet<JobCategory> JobCategories { get; set; }
     }
 }
