@@ -4,12 +4,11 @@
     ViewBag.Title = "Customer_ContractorDetails";
 }
 
-<h2>Customer_ContractorDetails</h2>
+<h2>Contractor Details</h2>
 
 <div>
-    <h4>Contractor</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="media-heading">
         <dt>
             @Html.DisplayNameFor(model => model.ContractorName)
         </dt>
@@ -86,5 +85,6 @@
 </div>
 <p>
     @*@Html.ActionLink("Edit", "Edit", new { id = Model.ContractorId }) |*@
+    @Html.ActionLink("Contact Contractor", "ContactContractor", new { id = Model.ContractorId}) |
     @Html.ActionLink("Back to List", "ListOfContractors", "Customers")
 </p>

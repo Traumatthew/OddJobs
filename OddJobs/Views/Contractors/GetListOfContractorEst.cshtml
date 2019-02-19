@@ -1,0 +1,64 @@
+﻿@model IEnumerable<OddJobs.Models.Estimate>
+
+@{
+    ViewBag.Title = "GetListOfContractorEst";
+}
+
+<h2>GetListOfContractorEst</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EstHoursToComplete)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaterialCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BidAmt)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.JobId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContractorId)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstHoursToComplete)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaterialCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BidAmt)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.JobId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContractorId)
+        </td>*@
+
+        @*@Html.HiddenFor(model => model.JobId)
+        @Html.HiddenFor(model => model.EstId)*@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.EstId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.EstId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.EstId })
+        </td>
+    </tr>
+}
+
+</table>

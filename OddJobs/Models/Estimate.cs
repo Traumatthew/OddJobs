@@ -7,10 +7,11 @@ using System.Web;
 
 namespace OddJobs.Models
 {
-    public class ContractorJobBid
+    public class Estimate
     {
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
-        public int BidId {get;set;}
+        public int EstId {get;set;}
 
         [Display(Name = "Estimated Hours For Compeletion")]
         public int? EstHoursToComplete { get; set; }
@@ -29,14 +30,14 @@ namespace OddJobs.Models
         public int JobId { get; set; }
         public Job Job { get; set; }
 
-    //    [ForeignKey("Customers")]
-    //    [Display(Name = "Customer Id")]
-    //    public int CustomerId { get; set; }
-    //    public Customer Customers { get; set; }
+        //    [ForeignKey("Customers")]
+        //    [Display(Name = "Customer Id")]
+        //    public int CustomerId { get; set; }
+        //    public Customer Customers { get; set; }
 
-    //    [ForeignKey("Contractor")]
-    //    [Display(Name = "Contractor Id")]
-    //    public int? ContractorId { get; set; }
-    //    public Contractor Contractor { get; set; }
+        [ForeignKey("Contractor")]
+        [Display(Name = "Contractor Id")]
+        public int? ContractorId { get; set; }
+        public Contractor Contractor { get; set; }
     }
 }

@@ -195,7 +195,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ContractorJobBidController.cs" />
+    <Compile Include="Controllers\EstimateController.cs" />
     <Compile Include="Controllers\ContractorsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -204,20 +204,65 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812171810068_Initial.cs" />
-    <Compile Include="Migrations\201812171810068_Initial.Designer.cs">
-      <DependentUpon>201812171810068_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201812181754509_initial.cs" />
+    <Compile Include="Migrations\201812181754509_initial.Designer.cs">
+      <DependentUpon>201812181754509_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901031908058_Nulled_JobCat_CustomerId_In_Jobmodel.cs" />
+    <Compile Include="Migrations\201901031908058_Nulled_JobCat_CustomerId_In_Jobmodel.Designer.cs">
+      <DependentUpon>201901031908058_Nulled_JobCat_CustomerId_In_Jobmodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901151612028_FKAddedToCJB.cs" />
+    <Compile Include="Migrations\201901151612028_FKAddedToCJB.Designer.cs">
+      <DependentUpon>201901151612028_FKAddedToCJB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901151638463_Better_Namingofmodel.cs" />
+    <Compile Include="Migrations\201901151638463_Better_Namingofmodel.Designer.cs">
+      <DependentUpon>201901151638463_Better_Namingofmodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901151656422_updatedNames.cs" />
+    <Compile Include="Migrations\201901151656422_updatedNames.Designer.cs">
+      <DependentUpon>201901151656422_updatedNames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901171431402_DdGenKey_EstModel.cs" />
+    <Compile Include="Migrations\201901171431402_DdGenKey_EstModel.Designer.cs">
+      <DependentUpon>201901171431402_DdGenKey_EstModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901251410090_RemovedEstFrmJobMdl.cs" />
+    <Compile Include="Migrations\201901251410090_RemovedEstFrmJobMdl.Designer.cs">
+      <DependentUpon>201901251410090_RemovedEstFrmJobMdl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901251514016_changednullabletypeJob.cs" />
+    <Compile Include="Migrations\201901251514016_changednullabletypeJob.Designer.cs">
+      <DependentUpon>201901251514016_changednullabletypeJob.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902041718050_AddedForeignKeyJobEstVM.cs" />
+    <Compile Include="Migrations\201902041718050_AddedForeignKeyJobEstVM.Designer.cs">
+      <DependentUpon>201902041718050_AddedForeignKeyJobEstVM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902051510333_removedFKinVM.cs" />
+    <Compile Include="Migrations\201902051510333_removedFKinVM.Designer.cs">
+      <DependentUpon>201902051510333_removedFKinVM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902051515196_removedJobIdinV.cs" />
+    <Compile Include="Migrations\201902051515196_removedJobIdinV.Designer.cs">
+      <DependentUpon>201902051515196_removedJobIdinV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902081422226_fixedKeyEst.cs" />
+    <Compile Include="Migrations\201902081422226_fixedKeyEst.Designer.cs">
+      <DependentUpon>201902081422226_fixedKeyEst.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Contractor.cs" />
-    <Compile Include="Models\ContractorJobBid.cs" />
+    <Compile Include="Models\Estimate.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerWallet.cs" />
     <Compile Include="Models\GeoLocation.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\JobCategory.cs" />
+    <Compile Include="Models\Job_EstimateVM.cs" />
     <Compile Include="Models\Keys.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Roles.cs" />
@@ -294,20 +339,23 @@
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\Home.cshtml" />
     <Content Include="Views\Contractors\Details.cshtml" />
-    <Content Include="Views\Jobs\Details.cshtml" />
+    <Content Include="Views\Jobs\JobDetails.cshtml" />
     <Content Include="Views\Jobs\CreateJob.cshtml" />
     <Content Include="Views\Jobs\Index.cshtml" />
     <Content Include="Views\Customers\ListOfContractors.cshtml" />
     <Content Include="Views\Customers\ViewMyJobRequests.cshtml" />
-    <Content Include="Views\Jobs\Edit.cshtml" />
+    <Content Include="Views\Jobs\EditJob.cshtml" />
     <Content Include="Views\Customers\Customer_ContractorDetails.cshtml" />
     <Content Include="Views\Contractors\ViewCustomerJobDetails.cshtml" />
-    <Content Include="Views\Contractors\CreateBid.cshtml" />
-    <Content Include="Views\ContractorJobBid\CreateBid.cshtml" />
-    <Content Include="Views\ContractorJobBid\BidDetails.cshtml" />
-    <Content Include="Views\ContractorJobBid\EditBid.cshtml" />
-    <Content Include="Views\ContractorJobBid\DeleteBid.cshtml" />
-    <Content Include="Views\ContractorJobBid\BidIndex.cshtml" />
+    <Content Include="Views\Estimate\CreateEst.cshtml" />
+    <Content Include="Views\Estimate\EstDetails.cshtml" />
+    <Content Include="Views\Estimate\EditEst.cshtml" />
+    <Content Include="Views\Estimate\DeleteEst.cshtml" />
+    <Content Include="Views\Estimate\EstIndex.cshtml" />
+    <Content Include="Views\Jobs\DeleteJob.cshtml" />
+    <Content Include="Views\Estimate\Job_CreateEst.cshtml" />
+    <Content Include="Views\Jobs\index2.cshtml" />
+    <Content Include="Views\Contractors\GetListOfContractorEst.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -326,8 +374,41 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201812171810068_Initial.resx">
-      <DependentUpon>201812171810068_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812181754509_initial.resx">
+      <DependentUpon>201812181754509_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901031908058_Nulled_JobCat_CustomerId_In_Jobmodel.resx">
+      <DependentUpon>201901031908058_Nulled_JobCat_CustomerId_In_Jobmodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901151612028_FKAddedToCJB.resx">
+      <DependentUpon>201901151612028_FKAddedToCJB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901151638463_Better_Namingofmodel.resx">
+      <DependentUpon>201901151638463_Better_Namingofmodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901151656422_updatedNames.resx">
+      <DependentUpon>201901151656422_updatedNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901171431402_DdGenKey_EstModel.resx">
+      <DependentUpon>201901171431402_DdGenKey_EstModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901251410090_RemovedEstFrmJobMdl.resx">
+      <DependentUpon>201901251410090_RemovedEstFrmJobMdl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901251514016_changednullabletypeJob.resx">
+      <DependentUpon>201901251514016_changednullabletypeJob.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902041718050_AddedForeignKeyJobEstVM.resx">
+      <DependentUpon>201902041718050_AddedForeignKeyJobEstVM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902051510333_removedFKinVM.resx">
+      <DependentUpon>201902051510333_removedFKinVM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902051515196_removedJobIdinV.resx">
+      <DependentUpon>201902051515196_removedJobIdinV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902081422226_fixedKeyEst.resx">
+      <DependentUpon>201902081422226_fixedKeyEst.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

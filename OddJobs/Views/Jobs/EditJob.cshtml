@@ -1,19 +1,21 @@
 ﻿@model OddJobs.Models.Job
 
 @{
-    ViewBag.Title = "CreateJob";
+    ViewBag.Title = "Edit";
 }
 
-<h2>CreateJob</h2>
+<h2>Edit</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
+    
 <div class="form-horizontal">
     <h4>Job</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.JobId)
+
     <div class="form-group">
         @Html.LabelFor(model => model.Street, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -54,13 +56,32 @@
         </div>
     </div>
 
-    @*<div class="form-group">
+    <div class="form-group">
         @Html.LabelFor(model => model.Estimate, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.Estimate, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Estimate, "", new { @class = "text-danger" })
         </div>
-    </div>*@
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Complete, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Complete)
+                @Html.ValidationMessageFor(model => model.Complete, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CatId, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.CatId, new SelectList(Model.JobCategories, "CatId", "CatName"), "", new { @class = "form-control" })
+
+            @Html.ValidationMessageFor(model => model.CatId, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.Details, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -70,50 +91,22 @@
         </div>
     </div>
 
-    @*<div class="col-md-10">
-            @Html.LabelFor(model => model.JobCategory.CatName, htmlAttributes: new { @class="control-label col-md-3"})
-            <div class="col-md-12">
-                @Html.DropDownListFor(model => model.JobCategory.CatName, new SelectList(Enum.GetValues(typeof(JobCat))))
-                @Html.ValidationMessageFor(model => model.JobCategory.CatName, "", new { @class = "text-danger"})
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.JobCategory.CatName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.JobCategory.CatName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.JobCategory.CatName, "", new { @class = "text-danger" })
             </div>
         </div>*@
 
     <div class="form-group">
-        @Html.LabelFor(model => model.JobCategory.CatId, new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.JobCategory.CatId, new SelectList(Model.JobCategories, "CatId", "CatName"), "", new { @class = "form-control" })
-
-            @Html.ValidationMessageFor(model => model.JobCategory.CatId, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    @*<div class="form-group">
-        @Html.LabelFor(model => model.JobCategory.CatName, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.JobCategory.CatName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.JobCategory.CatName, "", new { @class = "text-danger" })
-        </div>
-    </div>*@
-    @Html.HiddenFor(model => model.ContractorId)
-    @Html.HiddenFor(model => model.CustomerId)
-    @*@Html.HiddenFor(model => model.CatId)*@
-    @Html.HiddenFor(model => model.JobId)
-    @Html.HiddenFor(model => model.lng)
-    @Html.HiddenFor(model => model.lng)
-</div>
-
-    <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
+            <input type="submit" value="Save" class="btn btn-default" />
         </div>
     </div>
-
+</div>
 }
 
-    <div>
-        @Html.ActionLink("Back to List", "Details")
-    </div>
-
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }
+<div>
+    @Html.ActionLink("Back to List", "ViewMyJobRequests")
+</div>

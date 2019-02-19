@@ -102,7 +102,7 @@ namespace OddJobs.Controllers
         // POST: Customers/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CustomerId,FirstName,LastName,Street,City,State,Zip,Phone,Email")] Customer customer, int id)
+        public ActionResult Edit([Bind(Include = "CustomerId,FirstName,LastName,Street,City,State,Zip,Phone,Email")] Customer customer, int? id)
         {
             if (ModelState.IsValid)
             {

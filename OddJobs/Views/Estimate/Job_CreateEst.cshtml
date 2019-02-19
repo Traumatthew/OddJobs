@@ -1,0 +1,151 @@
+﻿@model OddJobs.Models.Job_EstimateVM
+
+@{
+    ViewBag.Title = "Job_CreateEst";
+}
+
+<h2>Job_CreateEst</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.job.JobId)
+    @Html.HiddenFor(model => model.estimate.EstId)
+    <div>
+        <h4>Job</h4>
+        <hr />
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.job.Street)
+            </dt>
+             
+            <dd>
+                @Html.DisplayFor(model => model.job.Street)
+            </dd>
+
+            @*<dt>
+                    @Html.DisplayNameFor(model => model.job.JobId)
+                </dt>
+
+                <dt>
+                    @Html.DisplayFor(model => model.job.JobId)
+                </dt>*@
+
+            <dt>
+                @Html.DisplayNameFor(model => model.job.City)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.job.City)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.job.State)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.job.State)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.job.Zip)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.job.Zip)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.job.Date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.job.Date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.job.Details)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.job.Details)
+            </dd>
+
+        </dl>
+    </div>
+
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.estimate.EstHoursToComplete, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.estimate.EstHoursToComplete, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.estimate.EstHoursToComplete, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.estimate.MaterialCost, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.estimate.MaterialCost, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.estimate.MaterialCost, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.estimate.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.estimate.Date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.estimate.Date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.estimate.BidAmt, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.estimate.BidAmt, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.estimate.BidAmt, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.JobId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.JobId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.JobId, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        @Html.HiddenFor(model => model.estimate.JobId)
+        @Html.HiddenFor(model => model.estimate.EstId)
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@*<div class="form-horizontal">
+        <h4>Job_JobBidVM</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>*@
+
+
+@*<div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@

@@ -1,10 +1,10 @@
-﻿@model IEnumerable<OddJobs.Models.ContractorJobBid>
+﻿@model IEnumerable<OddJobs.Models.Estimate>
 
 @{
-    ViewBag.Title = "BidIndex";
+    ViewBag.Title = "EstIndex";
 }
 
-<h2>BidIndex</h2>
+<h2>EstIndex</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -23,9 +23,9 @@
         <th>
             @Html.DisplayNameFor(model => model.BidAmt)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.JobId)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -43,13 +43,13 @@
         <td>
             @Html.DisplayFor(modelItem => item.BidAmt)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.JobId)
-        </td>
+        </td>*@
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BidId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BidId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BidId })
+            @Html.ActionLink("Edit", "EditEst", new { id=item.EstId }) |
+            @Html.ActionLink("Details", "EstDetails", new { id=item.EstId }) |
+            @Html.ActionLink("Delete", "DeleteEst", new { id=item.EstId })
         </td>
     </tr>
 }

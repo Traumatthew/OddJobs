@@ -30,8 +30,6 @@ namespace OddJobs.Models
         [Column(TypeName = "datetime2")]
         public DateTime? Date { get; set; }
 
-        public double Estimate { get; set; }
-
         public bool Complete { get; set; }
 
         [Display(Name = "Job Description")]
@@ -39,19 +37,17 @@ namespace OddJobs.Models
 
 
         [ForeignKey("JobCategory")]
-        [Display(Name = "What type of jobs is this?")]
-        public int CatId { get; set; }
+        [Display(Name = "What type of job is this?")]
+        public int? CatId { get; set; }
         public JobCategory JobCategory { get; set; }
 
         public IEnumerable<JobCategory> JobCategories { get; set; }
 
         [ForeignKey("Customers")]
-        [Display(Name = "Customer Id")]
-        public int CustomerId { get; set; }
+        public int? CustomerId { get; set; }
         public Customer Customers { get; set; }
 
         [ForeignKey("Contractor")]
-        [Display(Name = "Contractor Id")]
         public int? ContractorId { get; set; }
         public Contractor Contractor { get; set; }
     }

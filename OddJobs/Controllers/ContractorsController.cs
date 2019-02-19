@@ -176,16 +176,39 @@ namespace OddJobs.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult GetListOfContractorJobs()
+        public ActionResult GetListOfContractorEst(int? id)
         {
-
             string userId = User.Identity.GetUserId();
             var loggedInContractor = db.Contractors.Where(c => c.ApplicationUserId == userId).FirstOrDefault();
-            var myJobs = db.Jobs.Where(j => j.ContractorId == loggedInContractor.ContractorId).Include(j => j.Customers).ToList();
-            return View(myJobs);
+            var myEstimates = db.Jobs.Include(e => e.ContractorId == id);
+            return View(myEstimates);
+
+            //////////////////////////////////////////////////////////////////
+
+            //string userId = User.Identity.GetUserId();
+            //var loggedInContractor = db.Contractors.Where(c => c.ApplicationUserId == userId).FirstOrDefault();
+            //var myEstimates = db.Estimates.Where(j => j.EstId == loggedInContractor.ContractorId).ToList();
+            //return View(myEstimates);
+
+            /////////////////////////////////////////////////////////////////
+
+            //string userId = User.Identity.GetUserId();
+            //var loggedInContractor = db.Contractors.Where(c => c.ApplicationUserId == userId).FirstOrDefault();
+            //var myJobs = db.Estimates.Where(j => j.ContractorId == loggedInContractor.ContractorId).Include(j => j.EstId).ToList();
+            //return View(myJobs);
 
             //var custList = db.Contractors.Include(c => c.Customers).ToList();
             //return View(custList);
+        }
+
+
+        public ActionResult GetListOfContEst()
+        {
+            var UserId = User.Identity.GetUserId();
+            var loggedInContractor = db.Contractors.Where(c => c.ApplicationUserId == UserId).FirstOrDefault();
+            //var estimates = db.Estimates.Where(e => e.EstId == loggedInContractor.ContractorId).Include(e = e.JobId).ToList();
+            //var ContEstList = db.Estimates.Include()
+            return (null);
         }
 
 

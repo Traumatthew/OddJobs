@@ -35,34 +35,179 @@ namespace OddJobs.Controllers
             //return View();
         }
 
-        [HttpGet]
-        public ActionResult CreateJob()
+        public ActionResult Index2()
         {
-            //var currentUser = User.Identity.GetUserId();
+            return View(db.Jobs.ToList());
+        }
+
+
+        //GET
+        [HttpGet]
+        public ActionResult CreateJob(int? id)
+        {
+            //Job job = db.Jobs.Find(id);
             var jobCat = db.JobCategories.ToList();
             Job job = new Job()
             {
                 JobCategories = jobCat
             };
             return View(job);
+
+
+            //var currentUser = User.Identity.GetUserId();
+
+            //Drop down for picking the  category of customers job
+            //var jobCat = db.JobCategories.ToList();
+            //Job job = new Job()
+            //{
+            //    JobCategories = jobCat
+            //};
+
+            //return View(job);
+
             //string userId = User.Identity.GetUserId();
             //var loggedInContractor = db.Contractors.Where(c => c.ApplicationUserId == userId).FirstOrDefault();
             //var myJobs = db.Jobs.Where(j => j.ContractorId == loggedInContractor.ContractorId).Include(j => j.Customers).ToList();
         }
 
+
+        //POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateJob([Bind(Include = "JobId,Location,Estimate,Details")] Customer customer, Job job)
+        //public ActionResult CreateJob(Job job)
+        public ActionResult CreateJob([Bind(Include = "JobId,Street,City,State,Zip,Date,Details,lat,lng,JobCategory")] Job job)
         {
+
             //if (ModelState.IsValid)
             //{
+            //    var userId = User.Identity.GetUserId();
+            //    var currentCust = db.Customers.Where(c => c.ApplicationUserId == userId).SingleOrDefault();
+            //    job.CustomerId = currentCust.CustomerId;
+            //    SetCoords(job);
+            //    db.Jobs.Add(job);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Details");
+            //}
+            //return View(job);
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            if (ModelState.IsValid)
+            {
                 var userId = User.Identity.GetUserId();
-                var customerInDb = db.Customers.Where(c => c.ApplicationUserId == userId).SingleOrDefault();
-                job.CustomerId = customerInDb.CustomerId;
+                var currentCust = db.Customers.Where(c => c.ApplicationUserId == userId).SingleOrDefault();
+                job.JobId = job.JobId;
+                job.CustomerId = currentCust.CustomerId;
                 SetCoords(job);
                 db.Jobs.Add(job);
                 db.SaveChanges();
-                return RedirectToAction("Details");
+                return RedirectToAction("JobDetails");
+            }
+            return View(job);
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+            //var userId = User.Identity.GetUserId();
+            //var currentCust = (from c in db.Customers where userId == c.ApplicationUserId select c).First();
+            //currentCust.CustomerId = job.JobId;
+            //db.Entry(currentCust).State = EntityState.Modified;
+            //SetCoords(job);
+            //db.Jobs.Add(job);
+            //db.SaveChanges();
+            //return RedirectToAction("Details");
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            //if (ModelState.IsValid)
+            //{
+            //    var userId = User.Identity.GetUserId();
+            //    customer.ApplicationUserId = User.Identity.GetUserId();
+
+
+            //    var currentJob = db.Jobs.Where(j => j.JobId == customer.CustomerId);
+            //    //job.CatId = job.CatId;
+            //    SetCoords(job);
+            //    db.Jobs.Add(job);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Details");
+            //}
+            //return View(job);
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            //if (ModelState.IsValid)
+            //{
+            //    customer.ApplicationUserId = User.Identity.GetUserId();
+            //    SetCoords(customer);
+            //    db.Customers.Add(customer);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Details");
+            //}
+            //return View(customer);
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+            //var userId = User.Identity.GetUserId();
+            //var customerInDb = db.Customers.Where(c => c.ApplicationUserId == userId).FirstOrDefault();
+            //job.CustomerId = customerInDb.CustomerId;
+            //var jobInDb = db.Jobs.Where(j => j.JobId == job.JobId).FirstOrDefault();
+
+            //if (ModelState.IsValid)
+            //{
+            //    var JobInDb = db.Jobs.Single(j => j.JobId == job.JobId);
+            //    JobInDb.Street = job.Street;
+            //    JobInDb.City = job.City;
+            //    JobInDb.State = job.State;
+            //    JobInDb.Zip = job.Zip;
+            //    JobInDb.Estimate = job.Estimate;
+            //    JobInDb.Details = job.Details;
+            //    JobInDb.CatId = job.CatId;
+            //    JobInDb.CustomerId = job.CustomerId;
+            //    JobInDb.ContractorId = job.ContractorId;
+            //}
+
+            //SetCoords(job);
+            //db.SaveChanges();
+            //return RedirectToAction("Details");
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            //if (job.JobId == 0)
+            //{
+            //    db.Jobs.Add(job);
+            //}
+            //else
+            //{
+            //    var JobInDb = db.Jobs.Single(j => j.JobId == job.JobId);
+            //    //var JobInDb = db.Jobs.Where(j => j.JobId == job.JobId).SingleOrDefault();
+            //    JobInDb.Street = job.Street;
+            //    JobInDb.City = job.City;
+            //    JobInDb.State = job.State;
+            //    JobInDb.Zip = job.Zip;
+            //    JobInDb.Estimate = job.Estimate;
+            //    JobInDb.Details = job.Details;
+            //    JobInDb.CatId = job.CatId;
+            //    JobInDb.CustomerId = job.CustomerId;
+            //    JobInDb.ContractorId = job.ContractorId;
+            //}
+            //SetCoords(job);
+            ////db.Jobs.Add(job);
+            //db.SaveChanges();
+            //return RedirectToAction("Details");
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            //if (ModelState.IsValid)
+            //{
+            //    var userId = User.Identity.GetUserId();
+            //    var customerInDb = db.Customers.Where(c => c.ApplicationUserId == userId).SingleOrDefault();
+            //    job.CustomerId = customerInDb.CustomerId;
+            //    SetCoords(job);
+            //    db.Jobs.Add(job);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Details");
             //}
 
             //return View("Details");
@@ -79,39 +224,56 @@ namespace OddJobs.Controllers
         }
 
         [HttpGet]
-        public ActionResult Details(int? id)
+        public ActionResult JobDetails(int? id)
         {
             var userId = User.Identity.GetUserId();
             var job = db.Jobs.Where(x => x.JobId == id).FirstOrDefault();
             return View(job);
         }
 
-        public ActionResult DeleteJob(int id)
+        [HttpGet]
+        public ActionResult ViewCustomerJobDetails(int? id)
         {
+            var userId = User.Identity.GetUserId();
+            var job = db.Jobs.Where(x => x.JobId == id).FirstOrDefault();
+            return View(job);
+        }
+
+        [HttpGet]
+        public ActionResult DeleteJob(int? id)
+        {
+            var userId = User.Identity.GetUserId();
             var job = db.Jobs.Where(x => x.JobId == id).FirstOrDefault();
             return View(job);
         }
 
         [HttpPost]
-        public ActionResult DeleteJob(int id, FormCollection form)
+        public ActionResult DeleteJob(int? id, FormCollection form)
         {
             var job = db.Jobs.Where(x => x.JobId == id).FirstOrDefault();
             db.Jobs.Remove(job);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ViewMyJobRequests", "Customers");
         }
 
         [HttpGet]
-        public ActionResult Edit(int id)
+        public ActionResult EditJob(int? id)
         {
-            Job job = db.Jobs.Find(id);
+            var job = db.Jobs.SingleOrDefault(j => j.JobId == id);
+            job.JobCategories = db.JobCategories.ToList();
+            if(job == null)
+            {
+                return HttpNotFound();
+            }
             return View(job);
+            //Job job = db.Jobs.Find(id);
+            //return View(job);
         }
 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "JobId,Street,City,State,Zip,Estimate,Date,Details,JobCategory")] Job job, int id)
+        public ActionResult EditJob([Bind(Include = "JobId,Street,City,State,Zip,Date,Details,JobCategory")] Job job, int? id)
         {
             if (ModelState.IsValid)
             {
@@ -126,7 +288,6 @@ namespace OddJobs.Controllers
                 editedJob.City = job.City;
                 editedJob.State = job.State;
                 editedJob.Zip = job.Zip;
-                editedJob.Estimate = job.Estimate;
                 editedJob.Date = job.Date;
                 editedJob.Details = job.Details;
                 editedJob.JobCategory = job.JobCategory;
@@ -136,7 +297,7 @@ namespace OddJobs.Controllers
                 return RedirectToAction("Details");
             }
 
-            return View(job);
+            return View("ViewMyJobRequests", "Customers");
         }
     }
 }

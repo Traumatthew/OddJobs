@@ -1,10 +1,10 @@
 ﻿@model OddJobs.Models.Job
 
 @{
-    ViewBag.Title = "ViewCustomerJobDetails";
+    ViewBag.Title = "Details";
 }
 
-<h2>ViewCustomerJobDetails</h2>
+<h2>Details</h2>
 
 <div>
     <h4>Job</h4>
@@ -51,6 +51,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Estimate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estimate)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Complete)
         </dt>
 
@@ -65,34 +73,13 @@
         <dd>
             @Html.DisplayFor(model => model.Details)
         </dd>
-
-        @*<dt>
-            @Html.DisplayNameFor(model => model.CatId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CatId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CustomerId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CustomerId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ContractorId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ContractorId)
-        </dd>*@
+        @Html.HiddenFor(model => model.JobId)
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Place Estimate", "CreateEst", "Estimate", new { id = Model.JobId }, null) |
-    @Html.ActionLink("Back to List", "Index", "Jobs")
+    @*@Html.ActionLink("Place Bid")*@
+    @Html.ActionLink("Edit", "EditJob", "Jobs", new { id = Model.JobId }, new { @class = "btn btn-success" }) |
+    @*@Html.ActionLink("Edit", "EditJob", "Jobs", new { @class = "btn btn-success" }) |*@
+    @Html.ActionLink("Back to List", "ViewMyJobRequests", "Customers", routeValues: null, htmlAttributes: null)
 </p>
